@@ -1,8 +1,4 @@
 import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 
 export default function Form() {
   const [formData, setFormData] = useState({ name: '', email: '' });
@@ -17,96 +13,56 @@ export default function Form() {
   };
 
   return (
-    <Box
-      component="form"
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: 4,
-        p: { xs: 4, md: 6 },
-        background: 'rgba(255, 255, 255, 0.02)',
-        backdropFilter: 'blur(20px)',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        borderRadius: 4,
-        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-        textAlign: 'center',
-      }}
-      noValidate
-      autoComplete="off"
-      onSubmit={handleSubmit}
-    >
-      <Box sx={{ mb: 2 }}>
-        <Typography variant="h4" component="h2" sx={{ color: '#ffffff', mb: 2, fontWeight: 700 }}>
-          Готові розпочати?
-        </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 400 }}>
-          Залиште свої контакти і наша команда зв'яжеться з вами найближчим часом.
-        </Typography>
-      </Box>
-      
-      <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 3 }}>
-        <TextField 
-          id="name" 
-          name="name"
-          label="Ваше ім'я" 
-          variant="outlined" 
-          value={formData.name}
-          onChange={handleChange}
-          fullWidth
-          required
-          sx={{
-            '& .MuiOutlinedInput-root': {
-              borderRadius: 3,
-              background: 'rgba(0,0,0,0.2)',
-              '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.1)' },
-              '&:hover fieldset': { borderColor: 'rgba(255, 255, 255, 0.3)' },
-              '&.Mui-focused fieldset': { borderColor: '#06b6d4' },
-            },
-          }}
-        />
-        <TextField 
-          id="email" 
-          name="email"
-          label="Ваш Email" 
-          variant="outlined" 
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          fullWidth
-          required
-          sx={{
-            '& .MuiOutlinedInput-root': {
-              borderRadius: 3,
-              background: 'rgba(0,0,0,0.2)',
-              '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.1)' },
-              '&:hover fieldset': { borderColor: 'rgba(255, 255, 255, 0.3)' },
-              '&.Mui-focused fieldset': { borderColor: '#06b6d4' },
-            },
-          }}
-        />
-      </Box>
-      
-      <Button 
-        variant="contained" 
-        type="submit" 
-        size="large" 
-        sx={{ 
-          mt: 2, 
-          py: 2,
-          px: 6,
-          borderRadius: 50,
-          background: 'linear-gradient(135deg, #06b6d4, #8b5cf6)',
-          boxShadow: '0 10px 30px -10px rgba(6, 182, 212, 0.5)',
-          '&:hover': {
-            boxShadow: '0 15px 40px -10px rgba(6, 182, 212, 0.8)',
-            transform: 'translateY(-2px)',
-          },
-          transition: 'all 0.3s ease',
-        }}
+    <section className="w-full max-w-xl mx-auto px-4 py-16">
+      <form 
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden"
       >
-        Відправити запит
-      </Button>
-    </Box>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></div>
+        
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold text-white mb-3">Готові розпочати?</h2>
+          <p className="text-gray-400 text-sm">
+            Залиште свої контакти і наша команда зв'яжеться з вами найближчим часом.
+          </p>
+        </div>
+        
+        <div className="w-full flex flex-col gap-5">
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="name" className="text-sm font-medium text-gray-300 ml-1">Ваше ім'я</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+              placeholder="Іван Іваненко"
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="email" className="text-sm font-medium text-gray-300 ml-1">Ваш Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+              placeholder="ivan@example.com"
+            />
+          </div>
+        </div>
+        
+        <button 
+          type="submit" 
+          className="mt-8 w-full py-4 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold text-lg hover:opacity-90 transition-all shadow-[0_10px_30px_rgba(99,102,241,0.4)] hover:shadow-[0_15px_40px_rgba(99,102,241,0.6)] hover:-translate-y-1"
+        >
+          Відправити запит
+        </button>
+      </form>
+    </section>
   );
 }

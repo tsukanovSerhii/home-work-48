@@ -1,47 +1,16 @@
 import React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 
 export default function ItemCard({ title, description, image }) {
   return (
-    <Card 
-      sx={{ 
-        height: '100%', 
-        display: 'flex', 
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-        background: 'rgba(255, 255, 255, 0.02)',
-        backdropFilter: 'blur(10px)',
-        border: '1px solid rgba(255, 255, 255, 0.05)',
-        borderRadius: 5,
-        transition: 'all 0.4s ease',
-        '&:hover': {
-          transform: 'translateY(-10px)',
-          background: 'rgba(255, 255, 255, 0.04)',
-          border: '1px solid rgba(6, 182, 212, 0.3)',
-          boxShadow: '0 20px 40px rgba(0, 0, 0, 0.6)',
-        }
-      }}
-    >
-      <Box sx={{ p: 2, width: '100%' }}>
-        <CardMedia
-          sx={{ height: 240, borderRadius: 4 }}
-          image={image}
-          title={title}
-        />
-      </Box>
-      <CardContent sx={{ flexGrow: 1, px: 4, pt: 2, pb: 4 }}>
-        <Typography gutterBottom variant="h5" component="div" sx={{ color: '#ffffff', fontWeight: 600, mb: 2 }}>
-          {title}
-        </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.6 }}>
-          {description}
-        </Typography>
-      </CardContent>
-    </Card>
+    <div className="group flex flex-col items-center text-center bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 hover:border-indigo-500/50 hover:shadow-[0_10px_40px_rgba(99,102,241,0.2)]">
+      <div className="w-full h-48 md:h-56 rounded-xl overflow-hidden mb-5 relative">
+        <div className="absolute inset-0 bg-indigo-500/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-300 z-10"></div>
+        <img src={image} alt={title} className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
+      </div>
+      <div className="px-2 pb-4">
+        <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
+        <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
+      </div>
+    </div>
   );
 }
