@@ -13,7 +13,7 @@ export default function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Ім'я: ${formData.name}, Email: ${formData.email}`);
+    alert(`Дякуємо, ${formData.name}! Ми зв'яжемося з вами за адресою ${formData.email}.`);
   };
 
   return (
@@ -22,57 +22,77 @@ export default function Form() {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        gap: 4,
-        p: { xs: 3, md: 5 },
-        bgcolor: '#fafafa',
-        border: '1px solid #eaeaea',
+        gap: 3,
+        p: { xs: 4, md: 5 },
+        background: 'rgba(255, 255, 255, 0.03)',
+        backdropFilter: 'blur(20px)',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        borderRadius: 4,
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
       }}
       noValidate
       autoComplete="off"
       onSubmit={handleSubmit}
     >
-      <Box>
-        <Typography variant="h5" component="h2" sx={{ fontWeight: 400, letterSpacing: '-0.01em', mb: 1 }}>
-          Давайте почнемо
+      <Box sx={{ mb: 2, textAlign: 'center' }}>
+        <Typography variant="h5" component="h2" sx={{ color: '#f8fafc', mb: 1 }}>
+          Готові розпочати?
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Залиште заявку і ми обговоримо ваш проект.
+          Заповніть форму нижче, і наша команда зв'яжеться з вами найближчим часом.
         </Typography>
       </Box>
       
       <TextField 
         id="name" 
         name="name"
-        label="Ім'я" 
-        variant="standard" 
+        label="Ваше ім'я" 
+        variant="outlined" 
         value={formData.name}
         onChange={handleChange}
         fullWidth
         required
-        sx={{ '& .MuiInput-underline:after': { borderBottomColor: '#111' } }}
+        sx={{
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.2)' },
+            '&:hover fieldset': { borderColor: 'rgba(255, 255, 255, 0.4)' },
+          },
+        }}
       />
       <TextField 
         id="email" 
         name="email"
-        label="Email" 
-        variant="standard" 
+        label="Ваш Email" 
+        variant="outlined" 
         type="email"
         value={formData.email}
         onChange={handleChange}
         fullWidth
         required
-        sx={{ '& .MuiInput-underline:after': { borderBottomColor: '#111' } }}
+        sx={{
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.2)' },
+            '&:hover fieldset': { borderColor: 'rgba(255, 255, 255, 0.4)' },
+          },
+        }}
       />
       <Button 
         variant="contained" 
-        color="primary" 
+        color="secondary" 
         type="submit" 
         size="large" 
         fullWidth
-        disableElevation
-        sx={{ mt: 2, py: 1.5, bgcolor: '#111', '&:hover': { bgcolor: '#333' } }}
+        sx={{ 
+          mt: 2, 
+          py: 1.5,
+          background: 'linear-gradient(to right, #06b6d4, #8b5cf6)',
+          boxShadow: '0 10px 20px -10px rgba(139, 92, 246, 0.7)',
+          '&:hover': {
+            boxShadow: '0 15px 25px -10px rgba(139, 92, 246, 0.9)',
+          }
+        }}
       >
-        Відправити
+        Відправити запит
       </Button>
     </Box>
   );
