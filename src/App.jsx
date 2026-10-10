@@ -15,65 +15,40 @@ let theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#06b6d4', // Cyan
+      main: '#06b6d4',
     },
     secondary: {
-      main: '#8b5cf6', // Purple
+      main: '#8b5cf6',
     },
     background: {
-      default: '#0f172a',
-      paper: 'rgba(255, 255, 255, 0.05)',
+      default: '#070b19',
+      paper: 'rgba(255, 255, 255, 0.03)',
     },
     text: {
-      primary: '#f8fafc',
-      secondary: '#cbd5e1',
+      primary: '#ffffff',
+      secondary: '#94a3b8',
     },
   },
   typography: {
     fontFamily: '"Outfit", "Inter", sans-serif',
-    h3: {
+    h1: {
       fontWeight: 800,
-      background: 'linear-gradient(to right, #06b6d4, #8b5cf6)',
+      background: 'linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%)',
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
     },
-    h5: {
-      fontWeight: 600,
+    h4: {
+      fontWeight: 700,
     },
     button: {
       textTransform: 'none',
       fontWeight: 600,
-      letterSpacing: '0.5px',
+      fontSize: '1rem',
     }
   },
   shape: {
-    borderRadius: 16,
+    borderRadius: 20,
   },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: 12,
-          padding: '10px 24px',
-          boxShadow: '0 4px 14px 0 rgba(6, 182, 212, 0.39)',
-          transition: 'all 0.3s ease',
-          '&:hover': {
-            transform: 'translateY(-2px)',
-            boxShadow: '0 6px 20px rgba(6, 182, 212, 0.5)',
-          },
-        },
-      },
-    },
-    MuiCard: {
-      styleOverrides: {
-        root: {
-          background: 'rgba(255, 255, 255, 0.03)',
-          backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-        },
-      },
-    },
-  }
 });
 
 theme = responsiveFontSizes(theme);
@@ -84,51 +59,57 @@ function App() {
       <CssBaseline />
       <GlobalStyles styles={{
         body: {
-          background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)',
+          background: 'radial-gradient(circle at 50% -20%, #1e1b4b 0%, #070b19 80%)',
           minHeight: '100vh',
           backgroundAttachment: 'fixed',
         }
       }} />
-      <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Header />
         
-        <Box sx={{ flexGrow: 1, py: { xs: 6, md: 12 } }}>
-          <Container maxWidth="lg">
-            <Box sx={{ textAlign: 'center', mb: 10 }}>
-              <Typography variant="h3" component="h1" gutterBottom sx={{ pb: 1 }}>
-                Сучасні Веб Рішення
+        <Box sx={{ flexGrow: 1, py: { xs: 8, md: 14 }, width: '100%' }}>
+          <Container maxWidth="lg" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            
+            {/* Hero Section */}
+            <Box sx={{ textAlign: 'center', mb: 12, maxWidth: 800 }}>
+              <Typography variant="h1" component="h1" gutterBottom sx={{ fontSize: { xs: '3rem', md: '5rem' }, lineHeight: 1.1 }}>
+                Майбутнє Вже Тут
               </Typography>
-              <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 700, mx: 'auto', fontWeight: 300, mt: 2 }}>
-                Ми створюємо інноваційні цифрові продукти з приголомшливим дизайном та передовими технологіями.
+              <Typography variant="h6" color="text.secondary" sx={{ fontWeight: 400, mt: 3, mb: 5, lineHeight: 1.6 }}>
+                Створюємо неперевершені цифрові рішення. Бездоганний дизайн, сучасні технології та абсолютна увага до деталей, які перетворюють ідеї на реальність.
               </Typography>
             </Box>
 
-            <Grid container spacing={6}>
-              <Grid item xs={12} md={7}>
-                <Grid container spacing={4}>
-                  <Grid item xs={12} sm={6}>
-                    <ItemCard 
-                      title="Креативний Дизайн" 
-                      description="Неповторні інтерфейси, які захоплюють з першого погляду та залишають незабутнє враження."
-                      image="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <ItemCard 
-                      title="Швидка Розробка" 
-                      description="Оптимізований код та сучасний стек технологій для максимальної продуктивності."
-                      image="https://images.unsplash.com/photo-1618477388954-7852f32655ec?auto=format&fit=crop&w=800&q=80"
-                    />
-                  </Grid>
+            {/* Cards Section */}
+            <Box sx={{ width: '100%', mb: 12 }}>
+              <Typography variant="h4" sx={{ textAlign: 'center', mb: 6, color: '#fff' }}>
+                Що ми пропонуємо
+              </Typography>
+              <Grid container spacing={4} justifyContent="center">
+                <Grid item xs={12} sm={6} md={5}>
+                  <ItemCard 
+                    title="Креативний Дизайн" 
+                    description="Неповторні інтерфейси, які захоплюють з першого погляду та залишають незабутнє враження."
+                    image="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6} md={5}>
+                  <ItemCard 
+                    title="Швидка Розробка" 
+                    description="Оптимізований код та сучасний стек технологій для максимальної продуктивності."
+                    image="https://images.unsplash.com/photo-1618477388954-7852f32655ec?auto=format&fit=crop&w=800&q=80"
+                  />
                 </Grid>
               </Grid>
-              
-              <Grid item xs={12} md={5}>
-                <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  <Form />
-                </Box>
-              </Grid>
-            </Grid>
+            </Box>
+            
+            {/* Form Section */}
+            <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+              <Box sx={{ width: '100%', maxWidth: 600 }}>
+                <Form />
+              </Box>
+            </Box>
+
           </Container>
         </Box>
       </Box>
